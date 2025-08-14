@@ -318,7 +318,7 @@
                                      {\thesisdraft
                                       \ThesisTitlePage}}
               }
-              {\ThesisType{Dissertation}
+              {\ThesisType{DISSERTATION}
                \ThesisDegree{Doctor of Philosophy}
                \newcommand{\ThesisDegreeAbbreviation}{Ph.D.}
               \ifthenelse{\equal{#2}{FinalWithCorner}}
@@ -625,19 +625,19 @@
     Member}\\[28pt]
 
 %  UNCOMMENT this if you have 4 panelists!
-  % \@FirstColumnAdjust\shortstack{
-  %  \underline{\phantom{\@ThirdPanelMember}}\\[0pt]
-  %  \@ThirdPanelMember\\[0pt]
-  %  Member
-  %  }
-  %  &
-  %    \quad 
-  %  &
-  %  \@SecondColumnAdjust\shortstack{
-  %  \underline{\phantom{\@FourthPanelMember}}\\[0pt]
-  %  \@FourthPanelMember\\[0pt]
-  %  Member
-  %  }
+  \@FirstColumnAdjust\shortstack{
+   \underline{\phantom{\@ThirdPanelMember}}\\[0pt]
+   \@ThirdPanelMember\\[0pt]
+   Member
+   }
+   &
+     \quad 
+   &
+   \@SecondColumnAdjust\shortstack{
+   \underline{\phantom{\@FourthPanelMember}}\\[0pt]
+   \@FourthPanelMember\\[0pt]
+   Member
+   }
   \end{tabular}
   \end{center}
 
@@ -804,6 +804,7 @@
     % {\listtablename}
     %  \@mkboth{\uppercase{\listtablename}}{\uppercase{\listtablename}}}%
     \addcontentsline{toc}{chapter}{\listtablename}
+    \addtocontents{toc}{\protect\contentsline{part}{\normalsize\textnormal{CHAPTER}}{}{}}
     \@starttoc{lot}%
     \if@restonecol\twocolumn\fi
     \vfill
