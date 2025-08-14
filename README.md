@@ -4,6 +4,72 @@ This is a VS Code dev container environment specifically configured for LaTeX do
 
 > **Note**: For local build instructions without using dev containers, see the [README in the src directory](src/README.md). The instructions below are for dev container builds.
 
+## Prerequisites and Installation
+
+### Installing Dev Containers for VS Code
+
+Before using this LaTeX development container, you need to set up VS Code with Dev Containers support:
+
+#### Step 1: Install Visual Studio Code
+1. Download VS Code from [https://code.visualstudio.com/](https://code.visualstudio.com/)
+2. Install VS Code following the instructions for your operating system
+
+#### Step 2: Install Docker
+Dev Containers require Docker to run. Choose the appropriate installation for your system:
+
+**Windows:**
+1. Install [Docker Desktop for Windows](https://docs.docker.com/desktop/install/windows-install/)
+2. Enable WSL 2 integration if using Windows Subsystem for Linux
+3. Ensure Docker Desktop is running before using dev containers
+
+**macOS:**
+1. Install [Docker Desktop for Mac](https://docs.docker.com/desktop/install/mac-install/)
+2. Start Docker Desktop and ensure it's running
+
+**Linux:**
+1. Install Docker Engine following the [official Docker documentation](https://docs.docker.com/engine/install/)
+2. Add your user to the docker group: `sudo usermod -aG docker $USER`
+3. Log out and back in for group changes to take effect
+4. Start the Docker service: `sudo systemctl start docker`
+
+#### Step 3: Install the Dev Containers Extension
+1. Open VS Code
+2. Go to the Extensions view (Ctrl+Shift+X or Cmd+Shift+X)
+3. Search for "Dev Containers" (by Microsoft)
+4. Click "Install" on the "Dev Containers" extension
+5. Alternatively, install directly from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+
+#### Step 4: Verify Installation
+1. Open VS Code
+2. Press F1 or Ctrl+Shift+P (Cmd+Shift+P on Mac) to open the Command Palette
+3. Type "Dev Containers" - you should see various dev container commands available
+4. Ensure Docker is running by checking Docker Desktop or running `docker --version` in terminal
+
+#### Step 5: Using This LaTeX Container
+1. Clone or download this repository to your local machine
+2. Open the project folder in VS Code
+3. VS Code should automatically detect the `.devcontainer` configuration
+4. When prompted, click "Reopen in Container" or use Command Palette: "Dev Containers: Reopen in Container"
+5. Wait for the container to build (first time may take 10-15 minutes)
+
+### Troubleshooting Installation
+
+**Docker not running:**
+- Ensure Docker Desktop is started on Windows/Mac
+- On Linux, check Docker service: `sudo systemctl status docker`
+
+**Permission issues on Linux:**
+- Ensure your user is in the docker group: `groups $USER`
+- If not, add user to group: `sudo usermod -aG docker $USER` and restart
+
+**VS Code not detecting container:**
+- Ensure the `.devcontainer` folder exists in your project root
+- Try manually: Command Palette → "Dev Containers: Reopen in Container"
+
+**Container build fails:**
+- Check Docker has sufficient disk space and memory
+- Try rebuilding: Command Palette → "Dev Containers: Rebuild Container"
+
 ## Features
 
 - **Custom Dockerfile** - Built on top of `texlive/texlive:latest` with additional tools
