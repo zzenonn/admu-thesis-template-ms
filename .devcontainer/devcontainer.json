@@ -1,0 +1,264 @@
+{
+  "name": "LaTeX Development Environment",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  
+  // Features to add to the dev container
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "configureZshAsDefaultShell": true,
+      "installOhMyZsh": true,
+      "upgradePackages": false,
+      "username": "texlive"
+    },
+    "ghcr.io/devcontainers/features/git:1": {
+      "ppa": false,
+      "version": "os-provided"
+    }
+  },
+
+  // Configure tool-specific properties
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "James-Yu.latex-workshop",
+        "valentjn.vscode-ltex",
+        "tecosaur.latex-utilities",
+        "mathematic.vscode-latex",
+        "ms-vscode.vscode-json"
+      ],
+      "settings": {
+        "latex-workshop.latex.tools": [
+          {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+              "-synctex=1",
+              "-interaction=nonstopmode",
+              "-file-line-error",
+              "-pdf",
+              "-outdir=%OUTDIR%",
+              "%DOC%"
+            ],
+            "env": {}
+          },
+          {
+            "name": "latexmk-xelatex",
+            "command": "latexmk",
+            "args": [
+              "-synctex=1",
+              "-interaction=nonstopmode",
+              "-file-line-error",
+              "-xelatex",
+              "-outdir=%OUTDIR%",
+              "%DOC%"
+            ],
+            "env": {}
+          },
+          {
+            "name": "latexmk-shell-escape",
+            "command": "latexmk",
+            "args": [
+              "-shell-escape",
+              "-synctex=1",
+              "-interaction=nonstopmode",
+              "-file-line-error",
+              "-pdf",
+              "-outdir=%OUTDIR%",
+              "%DOC%"
+            ],
+            "env": {}
+          },
+          {
+            "name": "latexmk-xelatex-shell-escape",
+            "command": "latexmk",
+            "args": [
+              "-shell-escape",
+              "-synctex=1",
+              "-interaction=nonstopmode",
+              "-file-line-error",
+              "-xelatex",
+              "-outdir=%OUTDIR%",
+              "%DOC%"
+            ],
+            "env": {}
+          },
+          {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+              "-synctex=1",
+              "-interaction=nonstopmode",
+              "-file-line-error",
+              "%DOC%"
+            ],
+            "env": {}
+          },
+          {
+            "name": "xelatex",
+            "command": "xelatex",
+            "args": [
+              "-synctex=1",
+              "-interaction=nonstopmode",
+              "-file-line-error",
+              "%DOC%"
+            ],
+            "env": {}
+          },
+          {
+            "name": "pdflatex-shell-escape",
+            "command": "pdflatex",
+            "args": [
+              "-shell-escape",
+              "-synctex=1",
+              "-interaction=nonstopmode",
+              "-file-line-error",
+              "%DOC%"
+            ],
+            "env": {}
+          },
+          {
+            "name": "xelatex-shell-escape",
+            "command": "xelatex",
+            "args": [
+              "-shell-escape",
+              "-synctex=1",
+              "-interaction=nonstopmode",
+              "-file-line-error",
+              "%DOC%"
+            ],
+            "env": {}
+          },
+          {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+              "%DOCFILE%"
+            ],
+            "env": {}
+          },
+          {
+            "name": "biber",
+            "command": "biber",
+            "args": [
+              "%DOCFILE%"
+            ],
+            "env": {}
+          }
+        ],
+        "latex-workshop.latex.recipes": [
+          {
+            "name": "latexmk 🔃",
+            "tools": [
+              "latexmk"
+            ]
+          },
+          {
+            "name": "latexmk (XeLaTeX) 🔃",
+            "tools": [
+              "latexmk-xelatex"
+            ]
+          },
+          {
+            "name": "latexmk (shell-escape) 🔃",
+            "tools": [
+              "latexmk-shell-escape"
+            ]
+          },
+          {
+            "name": "latexmk (XeLaTeX + shell-escape) 🔃",
+            "tools": [
+              "latexmk-xelatex-shell-escape"
+            ]
+          },
+          {
+            "name": "pdflatex ➞ bibtex ➞ pdflatex × 2",
+            "tools": [
+              "pdflatex",
+              "bibtex",
+              "pdflatex",
+              "pdflatex"
+            ]
+          },
+          {
+            "name": "xelatex ➞ biber ➞ xelatex × 2",
+            "tools": [
+              "xelatex",
+              "biber",
+              "xelatex",
+              "xelatex"
+            ]
+          },
+          {
+            "name": "pdflatex (shell-escape) ➞ bibtex ➞ pdflatex × 2",
+            "tools": [
+              "pdflatex-shell-escape",
+              "bibtex",
+              "pdflatex-shell-escape",
+              "pdflatex-shell-escape"
+            ]
+          },
+          {
+            "name": "xelatex (shell-escape) ➞ biber ➞ xelatex × 2",
+            "tools": [
+              "xelatex-shell-escape",
+              "biber",
+              "xelatex-shell-escape",
+              "xelatex-shell-escape"
+            ]
+          }
+        ],
+        "latex-workshop.view.pdf.viewer": "tab",
+        "latex-workshop.latex.clean.fileTypes": [
+          "*.aux",
+          "*.bbl",
+          "*.blg",
+          "*.idx",
+          "*.ind",
+          "*.lof",
+          "*.lot",
+          "*.out",
+          "*.toc",
+          "*.acn",
+          "*.acr",
+          "*.alg",
+          "*.glg",
+          "*.glo",
+          "*.gls",
+          "*.ist",
+          "*.fls",
+          "*.log",
+          "*.fdb_latexmk",
+          "*.synctex.gz",
+          "*.pyg"
+        ],
+        "latex-workshop.latex.autoClean.run": "onBuilt",
+        "latex-workshop.latex.build.clearLog.everyRecipeStep.enabled": true
+      }
+    }
+  },
+
+  // Use 'forwardPorts' to make a list of ports inside the container available locally
+  "forwardPorts": [],
+
+  // Use 'postCreateCommand' to run commands after the container is created
+  "postCreateCommand": "echo 'LaTeX development environment ready!'",
+
+  // Use the texlive user instead of vscode
+  "remoteUser": "texlive",
+
+  // Set container environment variables
+  "containerEnv": {
+    "TZ": "Asia/Shanghai"
+  },
+
+  // Mount the local filesystem
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
+  ],
+
+  // Set the default path
+  "workspaceFolder": "/workspace"
+}

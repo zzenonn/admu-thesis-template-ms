@@ -1,0 +1,96 @@
+\documentclass[oneside,12pt]{discsthesis}
+\usepackage[left=1.55in, right=1.2in, top=1in, bottom=1.7in, a4paper]{geometry}
+% booktabs measures its rule spacing in ex of the font active at load time;
+% loading it before fontenc keeps the original table spacing
+\usepackage{booktabs}
+\usepackage[T1]{fontenc}
+\usepackage[x11names, rgb, table, dvipsnames, svgnames]{xcolor}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,amsfonts,amsthm,mathtools}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{pdflscape}
+\usepackage{pdfpages}
+\usepackage{listings}
+\usepackage[noend]{algpseudocode}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows, arrows.meta}
+\usepackage[titletoc]{appendix}
+\usepackage{hyperref}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{algorithm}{Algorithm}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\renewcommand\lstlistingname{SOURCECODE}
+
+% Adds a "Figure ... Page" style heading row to the list of figures/tables
+\newcommand{\addlistheading}[2]{%
+  \cleardoublepage
+  \addtocontents{#1}{\protect\contentsline{part}{#2}{}{}}}
+
+\hypersetup{
+    colorlinks,
+    linkcolor={black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+\pdfstringdefDisableCommands{\let\MakeUppercase\relax}
+
+\begin{document}
+\ThesisAuthor{First Name M. Last Name}
+\ThesisTitle{This is my thesis title}
+\ThesisArea{Computer Science}
+\ThesisDefenseYear{DECEMBER 2024}
+\DefenseDate{November 7, 2023}
+\ThesisGrade{B+ (Good)}
+
+\ThesisAdviser{RAPHAEL B. ALAMPAY, Ph.D.}
+% Optional: uncomment if the thesis has a co-adviser. Setting this switches
+% the recommendation/acceptance pages to the two-adviser signature layout.
+%\ThesisCoAdviser{PATRICIA ANGELA R. ABU, Ph.D.}
+\DepartmentHead{PATRICIA ANGELA R. ABU, Ph.D.}
+\SchoolHead{RAPHAEL A. GUERRERO, Ph.D.}
+\FirstPanelMember{MARIA REGINA JUSTINA E. ESTUAR, Ph.D.}
+\SecondPanelMember{ARIEL A. MAGUYON, Ph.D.}
+\ThirdPanelMember{ABRAHAM T. MAGPANTAY, M.S.}
+% Optional: uncomment if the panel has a fourth member. Setting this
+% switches the acceptance page to the 2x2 four-panel grid.
+%\FourthPanelMember{JUMELA P. SARMIENTO, Ph.D.}
+
+\ThesisStyle{MS}{Final}{-10pt}{15pt}
+% Choices for the 1st argument: MS, PhD
+% Choices for the 2nd argument: Final, FinalWithCorner, Draft
+
+\input{01_abstract}
+\input{02_acknowledgements}
+
+\tableofcontents
+\listoffigures
+\listoftables
+\addlistheading{lof}{\normalsize\textnormal{Figure \hspace*{\fill} Page}}
+\addlistheading{lot}{\normalsize\textnormal{Table \hspace*{\fill} Page}}
+\hypersetup{linkcolor=blue!30!black}
+
+\begin{spacing}{1.8}
+\input{03_introduction_00}
+\input{04_relatedliterature}
+\input{05_methodology}
+\input{06_results}
+\input{07_conclusions}
+\input{08_recommendations}
+\end{spacing}
+
+\input{10_references}
+
+\addappheadtotoc
+\begin{appendices}
+\input{09_appendices}
+\end{appendices}
+
+\end{document}
