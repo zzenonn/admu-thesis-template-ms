@@ -4,14 +4,14 @@ A repository for using Latex for the Ateneo de Manila University MS Computer Sci
 
 ## Requirements
 
-* Latex Compiler
+* Latex Compiler (with pdflatex and bibtex)
 
 ## Compiling the Paper
 
 The main entry point of the paper is `main.tex`. You can compile it using the following commands:
 
 ```bash
-pdflatex --shell-escape main.tex && bibtex main && pdflatex --shell-escape main.tex
+pdflatex main.tex && bibtex main && pdflatex main.tex
 ```
 
 This will produce a file called `main.pdf`.
@@ -22,8 +22,24 @@ For *nix users, you may use the following bash script for convenience:
 ./compile.sh
 ```
 
+If you are using the dev container instead, build from the project root with
+`make` (see the root [README](../README.md)).
+
 ## Notes
 
-### On Students with Two Advisers
+### Class and style options
 
-Use the `discsthesis_updated_double_adv.cls` template. To do this make sure that you change the `\documentclass` line on top of `main.tex` to the appropriate cls file. You can then use the definition `\ThesisCoAdviser{NAME OF COADVISER, Ph.D.}` below `\ThesisAdviser` in the cover page of the manuscript.
+The document class is `discsthesis` (`\documentclass[oneside,12pt]{discsthesis}`).
+`\ThesisStyle{MS|PhD}{Final|FinalWithCorner|Draft}{nudge1}{nudge2}` generates
+the title, recommendation, and acceptance pages: the first argument picks the
+MS or PhD wording, the second picks whether corner marks/a draft timestamp are
+shown, and the last two nudge the two signature columns horizontally.
+
+### Co-adviser and four-member panels
+
+By default the recommendation/acceptance pages show one adviser and a
+three-member panel. Setting `\ThesisCoAdviser{NAME, Ph.D.}` switches the
+adviser signature to a two-column adviser/co-adviser layout; setting
+`\FourthPanelMember{NAME, Ph.D.}` switches the panel to a 2x2 four-member
+grid. Both are commented out by default in `main.tex` — uncomment the ones
+you need.
