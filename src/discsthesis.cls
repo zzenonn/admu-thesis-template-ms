@@ -489,7 +489,7 @@
     \uppercase\expandafter{\@ThesisType} entitled:
 
   \begin{center}
-  {\@ThesisTitle}
+  \textbf{\@ThesisTitle}
   \end{center}
 
    \vfill
